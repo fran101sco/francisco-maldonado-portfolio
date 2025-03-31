@@ -1,38 +1,23 @@
-import React from 'react'
-import Home from './pages/home/home'
-import About from './pages/about/about'
-import Portfolio from './pages/portfolio/portfolio'
-import Contacto from './pages/contacto/contacto'
-import AppLayout from './components/AppLayout'
-import { createBrowserRouter, RouterProvider } from 'react-router'
-
+import React from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/home/home';
+import About from './pages/about/about';
+import Portfolio from './pages/portfolio/portfolio';
+import Contacto from './pages/contacto/contacto';
+import AppLayout from './components/AppLayout';
 
 const App = () => {
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <AppLayout />,
-      children:[
-        {
-          path: '/',
-          element: <Home />,
-        },
-        {
-          path: '/about',
-          element: <About />,
-        },
-        {
-          path: '/portfolio',
-          element: <Portfolio />,
-        },
-        {
-          path: '/contacto',
-          element: <Contacto />,
-        },
-      ],
-    },
-  ]);
+  return (
+    <HashRouter>
+      <AppLayout />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="portfolio" element={<Portfolio />} />
+        <Route path="contacto" element={<Contacto />} />
+      </Routes>
+    </HashRouter>
+  );
+};
 
-  return <RouterProvider router={router} />
-}
 export default App;
